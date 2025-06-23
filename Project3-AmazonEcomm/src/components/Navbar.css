@@ -1,0 +1,17 @@
+ul{
+    display: flex;
+    list-style: none;
+    justify-content: space-evenly;
+    cursor: pointer;
+    background-color: yellow;
+    color: red;
+    /* padding: 10px; */
+    ;
+}
+li{
+    padding: 10px 0px
+}
+li:hover{
+  background-color: white; 
+  font-weight: bold;
+}

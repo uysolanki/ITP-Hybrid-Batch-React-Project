@@ -1,0 +1,18 @@
+ol{
+    display: inline-block;
+    list-style: none;  
+    padding: 0px;
+}
+
+li{
+    margin: 5px;
+    /* background-color: yellow; */
+    color: red;
+}
+li:hover
+{
+    /* display: inline-block; */
+    background-color: red;
+    color: yellow;
+}
+
