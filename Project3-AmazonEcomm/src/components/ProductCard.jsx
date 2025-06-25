@@ -5,7 +5,7 @@ const ProductCard = ({product}) => {
   return (
    <>
                  <div className="card col-3   bg-dark text-white">
-                            <Link to="/single">
+                            <Link to={`/single/${product.id}`}>
                             <img className="card-img-top" src={product.image} alt="Card image cap" height='250' width='90' />
                             </Link>
                             <div className="card-body">
