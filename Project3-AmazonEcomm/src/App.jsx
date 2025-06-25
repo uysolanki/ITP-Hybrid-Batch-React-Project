@@ -4,6 +4,7 @@ import {BrowserRouter as Router , Routes, Route} from 'react-router-dom';
 import Landingpage from './pages/Landingpage';
 import AddProduct from './pages/AddProduct';
 import Menubar from './components/Menubar';
+import SingleProduct from './pages/SingleProduct';
 
 const App = () => {
   return (
@@ -13,7 +14,8 @@ const App = () => {
           <Routes>
                 <Route   path="/"     element={<Landingpage /> }      />
                 <Route   path="/allproducts"     element={<ShowProducts /> }      />
-                 <Route  path="/addproduct"     element={<AddProduct /> }      />
+                <Route  path="/addproduct"     element={<AddProduct /> }      />
+                <Route  path="/single"     element={<SingleProduct /> }      />
           </Routes>
 
       </Router>

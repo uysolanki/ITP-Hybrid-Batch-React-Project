@@ -3,6 +3,7 @@ import axios from 'axios'
 import SearchBar from '../components/SearchBar'
 import Navlist from '../components/Navlist'
 import Navbar from '../components/Navbar'
+import ProductCard from '../components/ProductCard'
 
 const ShowProducts = () => {
 
@@ -75,20 +76,20 @@ const ShowProducts = () => {
             {
                 products.map(
                     (product,index) => {
-                        return <div key={index} className="card col-3   bg-dark text-white">
-                            <img className="card-img-top" src={product.image} alt="Card image cap" height='250' width='90' />
-                            <div className="card-body">
-                                <h5 className="card-title">{product.title}</h5>
-                                <p className="card-text">{product.description}</p>
-                                <p className="card-text">{product.category}</p>
-                                <p className="card-text">{product.price}</p>
-                                {/* <p className="card-text">{product.rating.rate}</p> */}
-                                <div className="d-flex justify-content-center"> 
-                                <a href="#" className="btn btn-primary">Shop Now</a>
-                                </div>
-                            </div>
-                        </div>
-
+                        // return <div key={index} className="card col-3   bg-dark text-white">
+                        //     <img className="card-img-top" src={product.image} alt="Card image cap" height='250' width='90' />
+                        //     <div className="card-body">
+                        //         <h5 className="card-title">{product.title}</h5>
+                        //         <p className="card-text">{product.description}</p>
+                        //         <p className="card-text">{product.category}</p>
+                        //         <p className="card-text">{product.price}</p>
+                        //         {/* <p className="card-text">{product.rating.rate}</p> */}
+                        //         <div className="d-flex justify-content-center"> 
+                        //         <a href="#" className="btn btn-primary">Shop Now</a>
+                        //         </div>
+                        //     </div>
+                        // </div>
+                        return <ProductCard key={index} product={product}/>
                     }
                 )
             }
