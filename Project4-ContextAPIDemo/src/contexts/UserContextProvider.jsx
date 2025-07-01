@@ -2,14 +2,10 @@ import React, { useState } from 'react'
 import UserContext from './UserContext';
 
 function UserContextProvider({children}) {
-    const[user,setUser]=useState( { sname:'Alice'} )
-    let fruit="Apple";
-    let car="Audi"
+    const[user,setUser]=useState(null)
 
-    let sachin={user,fruit,car}
   return (
-   
-   <UserContext.Provider value={{sachin}}>
+   <UserContext.Provider value={{user,setUser}}>
     {children}
    </UserContext.Provider>
   )
