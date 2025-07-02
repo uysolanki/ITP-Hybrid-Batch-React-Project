@@ -1,43 +1,34 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext,useState } from 'react'
 import axios from 'axios'
 import SearchBar from '../components/SearchBar'
 import Navlist from '../components/Navlist'
 import Navbar from '../components/Navbar'
 import ProductCard from '../components/ProductCard'
+import ProductContext from '../contexts/ProductContext'
+
 
 const ShowProducts = () => {
+    
+    
+    const {products,loading} = useContext(ProductContext);
+    const [myproducts,setMyproducts]=useState(products)
+    const [buproducts,setBuproducts]=useState(products)
+    console.log('Products ',products)
+    console.log('My Products ',myproducts)
+    console.log('BU Products ',buproducts)
+    if (loading) return <p>Loading...</p>;
 
-    const [products,setProducts]=useState([])
-    const [buproducts,setBuproducts]=useState([])
-    async function loadData()
-    {
-            try
-            {
-             const jsObjectsFetchFromBeServer= await axios.get('http://localhost:8087/products/getAllProducts');
-             console.log(jsObjectsFetchFromBeServer.data)
-             setProducts(jsObjectsFetchFromBeServer.data)
-             setBuproducts(jsObjectsFetchFromBeServer.data)
-
-             
-            }
-            catch(error)
-            {
-                console.log(error)
-            }
-    }
-
+    console.log(products.length)
+   
+   
     const allCats=buproducts.map(
              (product)=>product.category
              )
             // console.log(allCats)
-            const uniqueCats=new Set(allCats)
+     const uniqueCats=new Set(allCats)
      const allDisplayCategoreis=[...uniqueCats,'All']
-    useEffect(
-        ()=>{
-        loadData()
-        },[]
-    )
-
+    
+     console.log(allDisplayCategoreis)
     
 
     function filterProductsByTitle(event){
@@ -48,7 +39,7 @@ const ShowProducts = () => {
                     const searchedProduct=buproducts.filter(
                         (prod)=>prod.title.toLowerCase().includes(value.toLowerCase())
                     )
-                    setProducts(searchedProduct)
+                    setMyproducts(searchedProduct)
                 // }
                 // else{
                 //     setProducts(buproducts)
@@ -62,9 +53,9 @@ const ShowProducts = () => {
               )
                //console.log(filteredProds)
                if(categoryValue.item==='All')
-                setProducts(buproducts)
+               setMyproducts(buproducts)
                else
-               setProducts(filteredProds)
+               setMyproducts(filteredProds)
             }
 
   return (
@@ -74,7 +65,7 @@ const ShowProducts = () => {
     <Navbar list={allDisplayCategoreis} handleClick={filterProductsByCategory}/>
     <div className='row m-2  0-0 justify-content-evenly gap-3 '>
             {
-                products.map(
+                myproducts.map(
                     (product,index) => {
                         // return <div key={index} className="card col-3   bg-dark text-white">
                         //     <img className="card-img-top" src={product.image} alt="Card image cap" height='250' width='90' />

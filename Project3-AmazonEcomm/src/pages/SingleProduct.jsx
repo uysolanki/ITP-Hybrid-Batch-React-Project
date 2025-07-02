@@ -2,29 +2,25 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import axios from 'axios'
+import { useContext } from 'react';
+import ProductContext from '../contexts/ProductContext';
 const SingleProduct = () => {
      const { id } = useParams();
+
+    const {products, loading} = useContext(ProductContext);
+
      const[product,setProduct]=useState({})
      useEffect(
              ()=>{
              loadData()
-             },[]
+             },[id]
          )
 
-          async function loadData()
+          function loadData()
             {
-            try
-            {
-             const jsSingleProductServer= await axios.get(`http://localhost:8087/products/${id}`);
-             console.log(jsSingleProductServer.data)
-             setProduct(jsSingleProductServer.data)  
+              const singleProduct=products.find((prod)=>prod.id==id)
+              setProduct(singleProduct)
             }
-            catch(error)
-            {
-                console.log(error)
-            }
-    }
-
 
   return (
    <>
